@@ -1,0 +1,8 @@
+[package]
+name = "pf2e_char_gen"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+rng = { git = "https://github.com/Liam19/rng.git" }
