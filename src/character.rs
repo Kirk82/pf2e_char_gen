@@ -1,7 +1,11 @@
 use crate::*;
 
 #[derive(Debug, PartialEq, Eq, Hash)]
-pub struct Character {
+pub struct Character<'a> {
+    pub ancestory: Ancestory,
+    pub first_name: &'a String,
+    pub last_name: &'a String,
+    pub sex: String,
     // pub perception: u32,
     // pub saving_throws_map: HashMap<SavingThrows, u32>,
     // pub skills_map: HashMap<Skills, u32>,
@@ -9,19 +13,10 @@ pub struct Character {
     // pub defences: Vec<String>,
     // pub spells: Vec<String>,
     // pub speed: u32,
-    // pub male_first_name: Vec<String>,
-    // pub female_first_name: Vec<String>,
-    // pub last_name: Vec<String>,
+    pub age: i32,
     // pub archetype: Archetype,
-    pub ancestory: data::Ancestory,
     // pub background: Vec<String>,
-    // pub heritage: HashMap<String, Vec<String>>,
+    pub heritage: &'a Heritage,
     // pub general_feats: Vec<String>,
     // pub skill_feats: Vec<String>,
-}
-
-pub enum Archetype {
-    Magus,
-    Sorcerer,
-    Fighter,
 }

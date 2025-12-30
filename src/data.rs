@@ -65,6 +65,7 @@ impl Data {
             ],
             heritage_map: heritage_map,
         };
+
     }
 }
 
@@ -95,14 +96,14 @@ pub enum Skills {
     Thievery,
 }
 
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, RandomVariant)]
 pub enum Ancestory {
     Elf,
     Dwarf,
     Human,
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq, Hash)]
 pub enum Heritage {
     AncientElf,
     ArcticElf,
