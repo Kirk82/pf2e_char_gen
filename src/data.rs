@@ -65,7 +65,6 @@ impl Data {
             ],
             heritage_map: heritage_map,
         };
-
     }
 }
 
@@ -117,7 +116,13 @@ pub enum Heritage {
 }
 
 pub enum Archetype {
-    Magus,
-    Sorcerer,
+    Magus(Magus),
+    Sorcerer(Sorcerer),
     Fighter,
+}
+
+#[derive(Debug, PartialEq, Eq, Hash)]
+pub enum Gender {
+    Male,
+    Female,
 }

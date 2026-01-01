@@ -1,9 +1,13 @@
 mod character;
 mod data;
+mod magus;
+mod sorcerer;
 
 use character::*;
 use data::*;
+use magus::*;
 use rng::*;
+use sorcerer::*;
 
 pub use std::collections::HashMap;
 
@@ -15,6 +19,7 @@ fn main() {
     let chosen_ancestory = Ancestory::random_variant(rng);
 
     //Using a bool to randomly select male or female sex
+
     let sex_decider = rng.gen_bool(0.5);
 
     let mut chosen_sex: String = "Male".to_owned();
@@ -49,15 +54,19 @@ fn main() {
 
     let chosen_heritage: &Heritage = potential_heritage.sample(rng).unwrap();
 
+    let mut character = Character::new();
+
+    character.choose_gender();
+
     //Printing all the data store in Character Struct
-    let character = Character {
-        ancestory: chosen_ancestory,
-        first_name: chosen_first_name,
-        last_name: chosen_last_name,
-        heritage: chosen_heritage,
-        sex: chosen_sex,
-        age: chosen_age,
-    };
+    // let character = Character {
+    //     ancestory: chosen_ancestory,
+    //     first_name: chosen_first_name,
+    //     last_name: chosen_last_name,
+    //     heritage: chosen_heritage,
+    //     gender: choose_gender(),
+    //     age: chosen_age,
+    // };
 
     println!("{:?}", character)
 }
