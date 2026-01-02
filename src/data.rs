@@ -44,7 +44,14 @@ impl Data {
         );
 
         return Self {
-            female_first_names: vec!["Dimitra".to_string()],
+            female_first_names: vec![
+                "Dimitra".to_string(),
+                "Millicent".to_string(),
+                "Leigh".to_string(),
+                "Sarah".to_string(),
+                "Jane".to_string(),
+                "Zerlinda".to_string(),
+            ],
 
             last_names: vec![
                 "Daly".to_string(),
@@ -53,7 +60,14 @@ impl Data {
                 "Denris".to_string(),
                 "Papavassiliou".to_string(),
             ],
-            male_first_names: vec!["Kirk".to_string()],
+            male_first_names: vec![
+                "Kirk".to_string(),
+                "Simon".to_string(),
+                "Ross".to_string(),
+                "Pip".to_string(),
+                "Smudge".to_string(),
+                "Alek".to_string(),
+            ],
             heritage_map: heritage_map,
         };
     }
@@ -114,7 +128,7 @@ pub enum Archetype {
     Fighter,
 }
 
-#[derive(Debug, Default, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
 pub enum Gender {
     #[default]
     Male,

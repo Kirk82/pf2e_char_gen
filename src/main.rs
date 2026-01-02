@@ -12,7 +12,6 @@ use sorcerer::*;
 pub use std::collections::HashMap;
 
 fn main() {
-    let rng = Rng::new();
     let data = Data::new();
 
     //randomly selecting Ancestory
@@ -58,6 +57,8 @@ fn main() {
 
     character.choose_gender();
     character.choose_name(&data);
+    character.choose_last_name(&data);
+    character.choose_ancestory();
 
     //Printing all the data store in Character Struct
     // let character = Character {

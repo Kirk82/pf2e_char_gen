@@ -25,6 +25,7 @@ impl Character {
     pub fn new() -> Self {
         Default::default()
     }
+    // fn for choosing gender using a bool to match with gender enum
     pub fn choose_gender(&mut self) {
         let rng = Rng::new();
 
@@ -34,7 +35,7 @@ impl Character {
         };
         self.gender = genders
     }
-
+    // fn for choosing name which samples a list from data.rs based on which gender was chosen
     pub fn choose_name(&mut self, data: &Data) {
         let rng = Rng::new();
 
@@ -44,10 +45,26 @@ impl Character {
 
         if chosen_gender == Gender::Male {
             first_names = data.male_first_names.sample(rng).unwrap();
-        } else if chosen_gender == Gender::Female {
+        } else {
             first_names = data.female_first_names.sample(rng).unwrap();
-        };
+        }
 
         self.first_name = first_names.to_string()
+    }
+
+    pub fn choose_last_name(&mut self, data: &Data) {
+        let rng = Rng::new();
+
+        let chosen_last_name = data.last_names.sample(rng).unwrap();
+
+        self.last_name = chosen_last_name.to_string()
+    }
+
+    pub fn choose_ancestory(&mut self) {
+        let rng = Rng::new();
+
+        let chosen_ancestory = Ancestory::random_variant(rng);
+
+        self.ancestory = chosen_ancestory
     }
 }
