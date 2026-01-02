@@ -57,6 +57,7 @@ fn main() {
     let mut character = Character::new();
 
     character.choose_gender();
+    character.choose_name(&data);
 
     //Printing all the data store in Character Struct
     // let character = Character {
