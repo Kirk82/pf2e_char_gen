@@ -1,14 +1,16 @@
 use crate::*;
 
+#[derive(Default)]
 pub struct Data {
-    pub male_first_names: Vec<String>,
-    pub female_first_names: Vec<String>,
+    pub male_first_names: MaleFirstNames,
+    pub female_first_names: FemaleFirstNames,
     pub last_names: Vec<String>,
     pub heritage_map: HashMap<Ancestory, Vec<Heritage>>,
 }
 
 impl Data {
     pub fn new() -> Self {
+        Default::default();
         // For heritages, we create a HashMap that has a list (vec) of valid heritages for each race
         // We declare the heritage_map variable, and initialise it to an empty HashMap.
         // Variable is 'mut' because we need to modify/mutate it when we add the key-value pairs
@@ -43,12 +45,8 @@ impl Data {
         );
 
         return Self {
-            female_first_names: vec![
-                "Dimitra".to_string(),
-                "Millicent".to_string(),
-                "Sarah".to_string(),
-                "Jane".to_string(),
-            ],
+            female_first_names: FemaleFirstNames,
+
             last_names: vec![
                 "Daly".to_string(),
                 "Hamilton".to_string(),
@@ -56,13 +54,7 @@ impl Data {
                 "Denris".to_string(),
                 "Papavassiliou".to_string(),
             ],
-            male_first_names: vec![
-                "Kirk".to_string(),
-                "Liam".to_string(),
-                "Ross".to_string(),
-                "Simon".to_string(),
-                "Alek".to_string(),
-            ],
+            male_first_names: MaleFirstNames,
             heritage_map: heritage_map,
         };
     }
@@ -95,15 +87,17 @@ pub enum Skills {
     Thievery,
 }
 
-#[derive(Debug, PartialEq, Eq, Hash, RandomVariant)]
+#[derive(Debug, Default, PartialEq, Eq, Hash, RandomVariant)]
 pub enum Ancestory {
+    #[default]
     Elf,
     Dwarf,
     Human,
 }
 
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, Default, PartialEq, Eq, Hash)]
 pub enum Heritage {
+    #[default]
     AncientElf,
     ArcticElf,
     WoodlandElf,
@@ -121,8 +115,30 @@ pub enum Archetype {
     Fighter,
 }
 
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, Default, PartialEq, Eq, Hash)]
 pub enum Gender {
+    #[default]
     Male,
     Female,
+}
+#[derive(Default, RandomVariant)]
+enum MaleFirstNames {
+    #[default]
+    Kirk,
+    Ross,
+    Pip,
+    Simon,
+    Liam,
+    Alek,
+}
+
+#[derive(Default, RandomVariant)]
+enum FemaleFirstNames {
+    #[default]
+    Dimitra,
+    Millicent,
+    Sarah,
+    Jane,
+    Leigh,
+    Zerlinda,
 }
