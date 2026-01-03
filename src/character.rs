@@ -2,10 +2,12 @@ use crate::*;
 
 #[derive(Debug, Default, PartialEq, Eq, Hash)]
 pub struct Character {
-    pub ancestory: Ancestory,
     pub first_name: String,
     pub last_name: String,
+    pub ancestory: Ancestory,
     pub gender: Gender,
+    pub age: i32,
+    pub heritage: Heritage,
     // pub perception: u32,
     // pub saving_throws_map: HashMap<SavingThrows, u32>,
     // pub skills_map: HashMap<Skills, u32>,
@@ -13,10 +15,8 @@ pub struct Character {
     // pub defences: Vec<String>,
     // pub spells: Vec<String>,
     // pub speed: u32,
-    pub age: i32,
     // pub archetype: Archetype,
     // pub background: Vec<String>,
-    pub heritage: Heritage,
     // pub general_feats: Vec<String>,
     // pub skill_feats: Vec<String>,
 }
@@ -66,5 +66,31 @@ impl Character {
         let chosen_ancestory = Ancestory::random_variant(rng);
 
         self.ancestory = chosen_ancestory
+    }
+
+    pub fn choose_age(&mut self) {
+        let rng = Rng::new();
+
+        let chosen_ancestory = &self.ancestory;
+
+        let chosen_age = match chosen_ancestory {
+            Ancestory::Elf => rng.gen_range(19..500),
+            Ancestory::Dwarf => rng.gen_range(19..250),
+            Ancestory::Human => rng.gen_range(19..70),
+        };
+
+        self.age = chosen_age
+    }
+
+    pub fn choose_heritage(&mut self, data: &Data) {
+        let rng = Rng::new();
+
+        let chosen_ancestory = &self.ancestory;
+
+        let potential_heritage: &Vec<Heritage> = data.heritage_map.get(&chosen_ancestory).unwrap();
+
+        let chosen_heritage = potential_heritage.sample(rng).unwrap();
+
+        self.heritage = chosen_heritage
     }
 }
