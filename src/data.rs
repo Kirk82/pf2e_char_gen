@@ -108,7 +108,7 @@ pub enum Ancestory {
     Human,
 }
 
-#[derive(Debug, Default, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
 pub enum Heritage {
     #[default]
     AncientElf,

@@ -87,10 +87,12 @@ impl Character {
 
         let chosen_ancestory = &self.ancestory;
 
-        let potential_heritage: &Vec<Heritage> = data.heritage_map.get(&chosen_ancestory).unwrap();
+        let potential_heritage = data.heritage_map.get(&chosen_ancestory).unwrap();
 
         let chosen_heritage = potential_heritage.sample(rng).unwrap();
 
-        self.heritage = chosen_heritage
+        let borrowed_heritage = *chosen_heritage;
+
+        self.heritage = borrowed_heritage
     }
 }

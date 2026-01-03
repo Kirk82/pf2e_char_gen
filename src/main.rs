@@ -60,6 +60,7 @@ fn main() {
     character.choose_last_name(&data);
     character.choose_ancestory();
     character.choose_age();
+    character.choose_heritage(&data);
 
     //Printing all the data store in Character Struct
     // let character = Character {
