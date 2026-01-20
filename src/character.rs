@@ -15,7 +15,7 @@ pub struct Character {
     // pub defences: Vec<String>,
     // pub spells: Vec<String>,
     // pub speed: u32,
-    // pub archetype: Archetype,
+    pub archetype: Archetype,
     // pub background: Vec<String>,
     // pub general_feats: Vec<String>,
     // pub skill_feats: Vec<String>,
@@ -94,5 +94,19 @@ impl Character {
         let borrowed_heritage = *chosen_heritage;
 
         self.heritage = borrowed_heritage
+    }
+
+    pub fn choose_archetype(&mut self) {
+        let rng = Rng::new();
+
+        let random_number = rng.gen_range(0..2);
+
+        let archetype = match random_number {
+            0 => Archetype::Magus(magus),
+            1 => Archetype::Sorcerer(sorcerer),
+            2 => Archetype::Fighter(fighter),
+        };
+
+        self.archetype = archetype;
     }
 }

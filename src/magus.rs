@@ -1,5 +1,6 @@
 use crate::*;
 
+#[derive(Debug, Default)]
 pub struct Magus {
     pub saving_throws_map: HashMap<SavingThrows, u32>,
     pub attacks: Vec<String>,
@@ -58,8 +59,9 @@ impl Magus {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, Hash, RandomVariant)]
+#[derive(Debug, PartialEq, Eq, Hash, RandomVariant, Default)]
 pub enum HybridStudy {
+    #[default]
     LaughingShadow,
     SparklingTarge,
     TwistingTree,

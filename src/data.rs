@@ -122,10 +122,12 @@ pub enum Heritage {
     SkilledHuman,
 }
 
+#[derive(Debug)]
+
 pub enum Archetype {
     Magus(Magus),
     Sorcerer(Sorcerer),
-    Fighter,
+    Fighter(Fighter),
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
