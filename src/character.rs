@@ -99,12 +99,14 @@ impl Character {
     pub fn choose_archetype(&mut self) {
         let rng = Rng::new();
 
-        let random_number = rng.gen_range(0..2);
+        let random_number = rng.gen_range(0..3);
 
         let archetype = match random_number {
-            0 => Archetype::Magus(magus),
-            1 => Archetype::Sorcerer(sorcerer),
-            2 => Archetype::Fighter(fighter),
+            0 => Archetype::Magus(Magus {}),
+            1 => Archetype::Sorcerer(Sorcerer {}),
+            2 => Archetype::Fighter(Fighter { test }),
+            3 => Archetype::None,
+            _ => panic!(),
         };
 
         self.archetype = archetype;

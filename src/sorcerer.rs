@@ -1,6 +1,4 @@
 use crate::*;
 
-#[derive(Debug)]
-pub struct Sorcerer {
-    pub saving_throws_map: HashMap<SavingThrows, u32>,
-}
+#[derive(Debug, Default, Eq, PartialEq, Hash)]
+pub struct Sorcerer {}

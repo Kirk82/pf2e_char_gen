@@ -1,3 +1,5 @@
+use std::default;
+
 use crate::*;
 
 #[derive(Default)]
@@ -122,12 +124,14 @@ pub enum Heritage {
     SkilledHuman,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Default, PartialEq, Eq, Hash)]
 
 pub enum Archetype {
     Magus(Magus),
     Sorcerer(Sorcerer),
     Fighter(Fighter),
+    #[default]
+    None,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq, Hash)]
