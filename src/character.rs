@@ -1,6 +1,6 @@
 use crate::*;
 
-#[derive(Debug, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Default, PartialEq, Eq)]
 pub struct Character {
     pub first_name: String,
     pub last_name: String,
@@ -102,9 +102,9 @@ impl Character {
         let random_number = rng.gen_range(0..3);
 
         let archetype = match random_number {
-            0 => Archetype::Magus(Magus {}),
+            0 => Archetype::Magus(Magus::default()),
             1 => Archetype::Sorcerer(Sorcerer {}),
-            2 => Archetype::Fighter(Fighter { test }),
+            2 => Archetype::Fighter(Fighter::default()),
             3 => Archetype::None,
             _ => panic!(),
         };

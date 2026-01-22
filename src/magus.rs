@@ -1,10 +1,10 @@
 use crate::*;
 
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, HashMap};
 
-#[derive(Debug, Eq, PartialEq, Hash, Default)]
+#[derive(Debug, Eq, PartialEq)]
 pub struct Magus {
-    // pub saving_throws_map: BTreeMap<SavingThrows, u32>,
+    pub saving_throws_map: BTreeMap<SavingThrows, u32>,
     // pub attacks: Vec<String>,
     // pub defences: Vec<String>,
     // pub spells: Vec<String>,
@@ -12,6 +12,19 @@ pub struct Magus {
     // pub perception: u32,
     // pub spell_dc: u32,
     // pub subclass: HybridStudy,
+}
+
+impl Default for Magus {
+    fn default() -> Self {
+        let mut saving_throws_map = BTreeMap::new();
+        saving_throws_map.insert(SavingThrows::Fortitude, 5);
+        saving_throws_map.insert(SavingThrows::Reflex, 3);
+        saving_throws_map.insert(SavingThrows::Will, 5);
+
+        Self {
+            saving_throws_map: saving_throws_map,
+        }
+    }
 }
 
 // impl Magus {

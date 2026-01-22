@@ -75,7 +75,7 @@ impl Data {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, Hash)]
+#[derive(Debug, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum SavingThrows {
     Fortitude,
     Reflex,
@@ -124,7 +124,7 @@ pub enum Heritage {
     SkilledHuman,
 }
 
-#[derive(Debug, Default, PartialEq, Eq, Hash)]
+#[derive(Debug, Default, PartialEq, Eq)]
 
 pub enum Archetype {
     Magus(Magus),
